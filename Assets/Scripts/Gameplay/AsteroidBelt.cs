@@ -17,12 +17,19 @@ namespace CubeToss.Gameplay
             {
                 var radius = Random.Range(innerRadius, outerRadius);
                 var angle = Random.Range(0, 360) * Mathf.Deg2Rad;
-                var position = transform.position +
-                               new Vector3(radius * Mathf.Cos(angle),
-                                   Random.Range(-beltHeight, beltHeight),
-                                   radius * Mathf.Sin(angle));
+                var position = transform.position + new Vector3(radius * Mathf.Cos(angle),
+                    Random.Range(-beltHeight, beltHeight), radius * Mathf.Sin(angle));
 
-                Instantiate(asteroidPrefab, position, Quaternion.identity, transform);
+                var rotation = Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+                var asteroid = Instantiate(asteroidPrefab, position, rotation, transform);
+                
+                asteroid.transform.localScale *= Random.Range(0.5f, 1.5f);
+                
+                var rb = asteroid.GetComponent<Rigidbody>();
+                if (rb)
+                {
+                    rb.mass = asteroid.transform.localScale.x;
+                }
             }
         }
     }
