@@ -107,7 +107,7 @@ namespace CubeToss.Gameplay
 
         public void CancelGrab()
         {
-            if (state != GrabState.Grabbing) 
+            if (state != GrabState.Grabbing && state != GrabState.Held)
                 return;
 
             state = GrabState.Returning;
@@ -121,7 +121,7 @@ namespace CubeToss.Gameplay
 
             _rigidbody.isKinematic = false;
             _rigidbody.useGravity = true;
-            _rigidbody.linearVelocity = velocity;
+            _rigidbody.AddForce(velocity, ForceMode.VelocityChange);
             
             state = GrabState.Released;
             GrabReleased?.Invoke();
@@ -132,5 +132,21 @@ namespace CubeToss.Gameplay
             transform.position = Vector3.MoveTowards(transform.position, targetPos, posSpeed * Time.deltaTime);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
         }
+
+private void OnDrawGizmos()
+{
+    Gizmos.color = Color.yellow;
+    Gizmos.DrawSphere(transform.position, 30.0f); // Larger sphere
+
+    if (_rigidbody != null)
+    {
+        Gizmos.color = Color.cyan;
+        Vector3 velocity = Application.isPlaying ? _rigidbody.linearVelocity : Vector3.zero;
+        float velocityScale = 20.0f; // Make the arrow longer
+        Vector3 endPoint = transform.position + velocity * velocityScale;
+        Gizmos.DrawLine(transform.position, endPoint);
+        Gizmos.DrawWireSphere(endPoint, 15.0f); // Larger wire sphere
+    }
+}
     }
 }

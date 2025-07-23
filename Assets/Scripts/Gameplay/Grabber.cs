@@ -159,7 +159,7 @@ namespace CubeToss.Gameplay
                     }
                     else
                     {
-                        _currentGrabbable.ReleaseGrab(Vector3.zero);
+                        _currentGrabbable.CancelGrab();
                     }
                     break;
             }
