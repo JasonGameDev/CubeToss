@@ -2061,14 +2061,13 @@ MonoBehaviour:
   holdDistance: 2
   grabSpeed: 10
   positionError: 0.01
-  sampleFractionStart: 0
-  sampleFractionEnd: 1
   detectionSampleCount: 3
-  maxSamples: 100
   flickThreshold: 500
   throwMultiplier: 0.01
   horizontalScale: 1
-  verticleScale: 1
+  verticalScale: 0.25
+  forwardScale: 1
+  maxVerticalVelocity: 10
 --- !u!1 &1993985171
 GameObject:
   m_ObjectHideFlags: 0
