@@ -8,14 +8,7 @@ namespace CubeToss.Gameplay
     [RequireComponent(typeof(Rigidbody))]
     public class GrabbableObject : MonoBehaviour
     {
-        public enum GrabState
-        {
-            Idle,
-            Grabbing,
-            Held,
-            Returning,
-            Released
-        }
+        public enum GrabState { Idle, Grabbing, Held, Returning, Released }
 
         [SerializeField] private GrabState state = GrabState.Idle;
         public GrabState State => state;
@@ -24,10 +17,7 @@ namespace CubeToss.Gameplay
         [SerializeField] private float rotationSpeed = 5f;
         [SerializeField] private float heldFollowSpeed = 15f;
 
-        public UnityEvent GrabStarted;
-        public UnityEvent GrabHeld;
-        public UnityEvent GrabCanceled;
-        public UnityEvent GrabReleased;
+        public UnityEvent GrabStarted, GrabHeld, GrabCanceled, GrabReleased;
 
         private Vector3 _savedPosition;
         private Quaternion _savedRotation;
@@ -55,24 +45,20 @@ namespace CubeToss.Gameplay
             switch (state)
             {
                 case GrabState.Grabbing:
-                    MoveAndRotate(_targetPosition, _targetRotation, _grabSpeed, rotationSpeed);
-                    break;
-                case GrabState.Held:
-                    MoveAndRotate(_targetPosition, _targetRotation, heldFollowSpeed, rotationSpeed);
+                    MoveAndRotate(_targetPosition, _targetRotation, _grabSpeed, 0.0f);
                     break;
                 case GrabState.Returning:
                     MoveAndRotate(_savedPosition, _savedRotation, returnSpeed, rotationSpeed);
                     if (Vector3.Distance(transform.position, _savedPosition) < 0.001f && Quaternion.Angle(transform.rotation, _savedRotation) < 0.5f)
                         state = GrabState.Idle;
                     break;
+                case GrabState.Held:
+                    MoveAndRotate(_targetPosition, _targetRotation, heldFollowSpeed, rotationSpeed);
+                    break;
                 case GrabState.Released:
                     if (_rigidbody.linearVelocity.sqrMagnitude < 0.001f && _rigidbody.angularVelocity.sqrMagnitude < 0.001f)
                         state = GrabState.Idle;
                     break;
-                case GrabState.Idle:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -134,6 +120,7 @@ namespace CubeToss.Gameplay
                 return;
 
             _rigidbody.isKinematic = false;
+            _rigidbody.useGravity = true;
             _rigidbody.linearVelocity = velocity;
             
             state = GrabState.Released;
