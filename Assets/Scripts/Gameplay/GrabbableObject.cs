@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
+using CubeToss.Events;
 
 namespace CubeToss.Gameplay
 {
@@ -13,10 +13,10 @@ namespace CubeToss.Gameplay
         [SerializeField] private GrabState state = GrabState.Idle;
         public GrabState State => state;
 
-        [SerializeField] private float returnSpeed = 8f;
-        [SerializeField] private float rotationSpeed = 5f;
-        [SerializeField] private float heldFollowSpeed = 15f;
-
+        // System wide Event Channel for Grabbable Objects
+        public GrabbableEventChannel EventChannel;
+        
+        // On Object Grabable Events, easy to config vfx, etc, via Inspector
         public UnityEvent GrabStarted, GrabHeld, GrabCanceled, GrabReleased;
 
         private Vector3 _savedPosition;
@@ -26,7 +26,12 @@ namespace CubeToss.Gameplay
         private Quaternion _targetRotation;
         
         private float _grabSpeed;
+        private float _returnSpeed;
+        private float _rotationSpeed;
+        private float _followSpeed;
 
+        private bool _hasDescended;
+        
         private Rigidbody _rigidbody;
 
         private void Awake()
@@ -47,45 +52,51 @@ namespace CubeToss.Gameplay
                 case GrabState.Grabbing:
                     MoveAndRotate(_targetPosition, _targetRotation, _grabSpeed, 0.0f);
                     break;
+                
                 case GrabState.Returning:
-                    MoveAndRotate(_savedPosition, _savedRotation, returnSpeed, rotationSpeed);
+                    MoveAndRotate(_savedPosition, _savedRotation, _returnSpeed, _rotationSpeed);
                     if (Vector3.Distance(transform.position, _savedPosition) < 0.001f && Quaternion.Angle(transform.rotation, _savedRotation) < 0.5f)
                         state = GrabState.Idle;
                     break;
+                
                 case GrabState.Held:
-                    MoveAndRotate(_targetPosition, _targetRotation, heldFollowSpeed, rotationSpeed);
+                    MoveAndRotate(_targetPosition, _targetRotation, _followSpeed, _rotationSpeed);
                     break;
+                
                 case GrabState.Released:
-                    if (_rigidbody.linearVelocity.sqrMagnitude < 0.001f && _rigidbody.angularVelocity.sqrMagnitude < 0.001f)
-                        state = GrabState.Idle;
+                    // Debug.Log("Velocity: " + _rigidbody.linearVelocity + ", Angular Velocity: " + _rigidbody.angularVelocity);
                     break;
             }
         }
 
-        public void StartGrab(Vector3 targetPosition, float speed)
+        public void StartGrab(Vector3 targetPosition, float grabSpeed, float returnSpeed, float followSpeed, float rotationSpeed)
         {
             if (state != GrabState.Idle)
                 return;
 
+            _rigidbody.isKinematic = true;
+            
             _savedPosition = transform.position;
             _savedRotation = transform.rotation;
-            _rigidbody.isKinematic = true;
-            _grabSpeed = speed;
+            
+            _grabSpeed = grabSpeed;
+            _returnSpeed = returnSpeed;
+            _followSpeed = followSpeed;
+            _rotationSpeed = rotationSpeed;
+            
+            _targetPosition = targetPosition;
             _targetRotation = Quaternion.identity;
 
             state = GrabState.Grabbing;
             GrabStarted?.Invoke();
-
-            _targetPosition = targetPosition;
         }
         
-        public void UpdateGrab(Vector3 targetPosition, float speed)
+        public void UpdateGrab(Vector3 targetPosition)
         {
             if (state != GrabState.Grabbing)
                 return;
 
             _targetPosition = targetPosition;
-            _grabSpeed = speed;
         }
 
         public void CompleteGrab()
@@ -123,8 +134,11 @@ namespace CubeToss.Gameplay
             _rigidbody.useGravity = true;
             _rigidbody.AddForce(velocity, ForceMode.VelocityChange);
             
+            _hasDescended = false;
+            
             state = GrabState.Released;
             GrabReleased?.Invoke();
+            EventChannel.Released.Invoke(this);
         }
         
         private void MoveAndRotate(Vector3 targetPos, Quaternion targetRot, float posSpeed, float rotSpeed)
@@ -133,20 +147,20 @@ namespace CubeToss.Gameplay
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
         }
 
-private void OnDrawGizmos()
-{
-    Gizmos.color = Color.yellow;
-    Gizmos.DrawSphere(transform.position, 30.0f); // Larger sphere
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(transform.position, 20.0f);
 
-    if (_rigidbody != null)
-    {
-        Gizmos.color = Color.cyan;
-        Vector3 velocity = Application.isPlaying ? _rigidbody.linearVelocity : Vector3.zero;
-        float velocityScale = 20.0f; // Make the arrow longer
-        Vector3 endPoint = transform.position + velocity * velocityScale;
-        Gizmos.DrawLine(transform.position, endPoint);
-        Gizmos.DrawWireSphere(endPoint, 15.0f); // Larger wire sphere
-    }
-}
+            if (_rigidbody != null)
+            {
+                Gizmos.color = Color.cyan;
+                Vector3 velocity = Application.isPlaying ? _rigidbody.linearVelocity : Vector3.zero;
+                float velocityScale = 1.0f;
+                Vector3 endPoint = transform.position + velocity * velocityScale;
+                Gizmos.DrawLine(transform.position, endPoint);
+                Gizmos.DrawWireSphere(endPoint, 10.0f);
+            }
+        }
     }
 }

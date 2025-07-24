@@ -7,11 +7,12 @@ namespace CubeToss.Gameplay
         [SerializeField] private Asteroid asteroidPrefab;
 
         [SerializeField] private int count = 100;
-        [SerializeField] private float innerRadius = 20f;
-        [SerializeField] private float outerRadius = 30f;
-        [SerializeField] private float beltHeight = 2f;
+        [SerializeField] private float innerRadius = 20.0f;
+        [SerializeField] private float outerRadius = 30.0f;
+        [SerializeField] private float beltHeight = 2.0f;
+        [SerializeField] private float rotationSpeed = 100.0f;
 
-        void Start()
+        private void Start()
         {
             for (int i = 0; i < count; i++)
             {
@@ -24,6 +25,7 @@ namespace CubeToss.Gameplay
                 var asteroid = Instantiate(asteroidPrefab, position, rotation, transform);
                 
                 asteroid.transform.localScale *= Random.Range(0.5f, 1.5f);
+                asteroid.gameObject.layer = gameObject.layer;
                 
                 var rb = asteroid.GetComponent<Rigidbody>();
                 if (rb)
@@ -31,6 +33,11 @@ namespace CubeToss.Gameplay
                     rb.mass = asteroid.transform.localScale.x;
                 }
             }
+        }
+
+        private void Update()
+        {
+            transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
         }
     }
 }

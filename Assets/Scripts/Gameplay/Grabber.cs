@@ -12,9 +12,12 @@ namespace CubeToss.Gameplay
         [SerializeField] private Camera mainCamera;
         
         [Header("Grab Settings")]
-        [SerializeField] private float grabDistance = 0.3f;
-        [SerializeField] private float holdDistance = 0.1f;
-        [SerializeField] private float grabSpeed = 5f;
+        [SerializeField] private float grabDistance = 200.0f;
+        [SerializeField] private float holdDistance = 100.0f;
+        [SerializeField] private float grabSpeed = 500.0f;
+        [SerializeField] private float returnSpeed = 500.0f;
+        [SerializeField] private float rotationSpeed = 1080.0f;
+        [SerializeField] private float heldFollowSpeed = 500.0f;
         [SerializeField] private float positionError = 0.01f;
 
         [Header("Flick Settings")]
@@ -72,14 +75,14 @@ namespace CubeToss.Gameplay
             switch (_currentGrabbable.State)
             {
                 case GrabbableObject.GrabState.Idle:
-                    _currentGrabbable.StartGrab(holdPoint, grabSpeed);
+                    _currentGrabbable.StartGrab(holdPoint, grabSpeed, returnSpeed, heldFollowSpeed, rotationSpeed);
                     
                     _flickDetectionWindow.Clear();
                     _flickStartSample = null;
                     break;
                 
                 case GrabbableObject.GrabState.Grabbing:
-                    _currentGrabbable.UpdateGrab(holdPoint, grabSpeed);
+                    _currentGrabbable.UpdateGrab(holdPoint);
                     
                     var distance = Vector3.Distance(_currentGrabbable.transform.position, holdPoint);
                     if (distance <= positionError)

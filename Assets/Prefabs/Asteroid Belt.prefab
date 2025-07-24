@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3049418056023491843}
   - component: {fileID: 8233006589134269318}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Asteroid Belt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,4 +48,5 @@ MonoBehaviour:
   count: 1000
   innerRadius: 150
   outerRadius: 400
-  beltHeight: 100
+  beltHeight: 50
+  rotationSpeed: 25
