@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CubeToss.Events;
 using CubeToss.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,9 @@ namespace CubeToss.Gameplay
 {
     public class Grabber : MonoBehaviour
     {
+        [Header("Event Channels")]
+        [SerializeField] private GrabberEventChannel grabbableEventChannel;
+        
         [Header("Camera Reference")]
         [SerializeField] private Camera mainCamera;
         
@@ -22,7 +26,8 @@ namespace CubeToss.Gameplay
 
         [Header("Flick Settings")]
         [SerializeField, Range(1, 60)] private int detectionSampleCount = 3;
-        [SerializeField] private float flickThreshold = 200.0f;
+        [SerializeField] private float minFlickThreshold = 2000.0f;
+        [SerializeField] private float maxFlickThreshold = 20000.0f;
         [SerializeField] private float throwMultiplier = 0.01f;
         [SerializeField] private float throwAngleMultiplier = 1.0f;
         [SerializeField] private float horizontalScale = 1.0f;
@@ -110,10 +115,16 @@ namespace CubeToss.Gameplay
                         if (deltaTime > 0.0f)
                         {
                             var speed = (lastSample.Position - firstSample.Position).magnitude / deltaTime;
-                            if (_flickStartSample == null && speed > flickThreshold)
+                            if (_flickStartSample == null && speed > minFlickThreshold)
+                            {
                                 _flickStartSample = lastSample;
-                            else if (speed < flickThreshold)
+                                var normalizedPower = Mathf.InverseLerp(minFlickThreshold, maxFlickThreshold, speed);
+                                grabbableEventChannel.UpdateFlickPower.Invoke(normalizedPower);
+                            }
+                            else if (speed < minFlickThreshold)
+                            {
                                 _flickStartSample = null;
+                            }
                         }
                     }
                     break;
@@ -153,13 +164,17 @@ namespace CubeToss.Gameplay
                         var deltaPosition = releaseSample.Position - startSample.Position;
                         var deltaTime = Mathf.Max(0.001f, releaseSample.Time - startSample.Time);
                         var screenVelocity = deltaPosition / deltaTime;
-
+                        
                         var worldDirection =
                             (Vector3.right * (screenVelocity.x * horizontalScale) +
                              Vector3.up * (screenVelocity.y * verticalScale) +
                              Vector3.forward * (screenVelocity.y * forwardScale)).normalized;
 
-                        var velocity = worldDirection * (screenVelocity.magnitude * throwMultiplier);
+                        var cappedScreenVelocity = Mathf.Clamp(screenVelocity.magnitude, minFlickThreshold, maxFlickThreshold);
+                        var normalizedPower = Mathf.InverseLerp(minFlickThreshold, maxFlickThreshold, cappedScreenVelocity);
+                        grabbableEventChannel.UpdateFlickPower.Invoke(normalizedPower);
+                        
+                        var velocity = worldDirection * (cappedScreenVelocity * throwMultiplier);
                         velocity.y = Mathf.Clamp(velocity.y, -maxVerticalVelocity, maxVerticalVelocity);
 
                         var angularAxis = Vector3.Cross(worldDirection, Vector3.forward).normalized;

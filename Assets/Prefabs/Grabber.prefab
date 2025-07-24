@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e4ecc7c183d4740a39c272df5385df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabbableEventChannel: {fileID: 11400000, guid: f5f9820b393cc054ea9a6749d3825478, type: 2}
   mainCamera: {fileID: 0}
   grabDistance: 400
   holdDistance: 200
@@ -53,7 +54,8 @@ MonoBehaviour:
   heldFollowSpeed: 500
   positionError: 0.01
   detectionSampleCount: 3
-  flickThreshold: 500
+  minFlickThreshold: 1000
+  maxFlickThreshold: 15000
   throwMultiplier: 0.05
   throwAngleMultiplier: 1.5
   horizontalScale: 1
