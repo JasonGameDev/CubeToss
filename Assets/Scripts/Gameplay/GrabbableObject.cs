@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using CubeToss.Events;
+using Random = UnityEngine.Random;
 
 namespace CubeToss.Gameplay
 {
@@ -9,7 +10,6 @@ namespace CubeToss.Gameplay
     public class GrabbableObject : MonoBehaviour
     {
         public enum GrabState { Idle, Grabbing, Held, Returning, Released }
-
         [SerializeField] private GrabState state = GrabState.Idle;
         public GrabState State => state;
 
@@ -29,20 +29,23 @@ namespace CubeToss.Gameplay
         private float _returnSpeed;
         private float _rotationSpeed;
         private float _followSpeed;
-
-        private bool _hasDescended;
         
         private Rigidbody _rigidbody;
-
+        private Collider _collider;
+        
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<Collider>();
         }
 
         private void Start()
         {
             _savedPosition = transform.position;
             _savedRotation = transform.rotation;
+            
+            _collider.isTrigger = true;
+            _rigidbody.isKinematic = true;
         }
 
         private void Update()
@@ -64,6 +67,7 @@ namespace CubeToss.Gameplay
                     break;
                 
                 case GrabState.Released:
+                    // Under physics simulation, so no need to update position or rotation here.
                     // Debug.Log("Velocity: " + _rigidbody.linearVelocity + ", Angular Velocity: " + _rigidbody.angularVelocity);
                     break;
             }
@@ -125,16 +129,16 @@ namespace CubeToss.Gameplay
             GrabCanceled?.Invoke();
         }
 
-        public void ReleaseGrab(Vector3 velocity)
+        public void ReleaseGrab(Vector3 velocity, Vector3 angularVelocity)
         {
             if (state != GrabState.Held)
                 return;
 
+            _collider.isTrigger = false;
             _rigidbody.isKinematic = false;
             _rigidbody.useGravity = true;
             _rigidbody.AddForce(velocity, ForceMode.VelocityChange);
-            
-            _hasDescended = false;
+            _rigidbody.AddTorque(angularVelocity, ForceMode.VelocityChange);
             
             state = GrabState.Released;
             GrabReleased?.Invoke();

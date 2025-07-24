@@ -23,12 +23,15 @@ namespace CubeToss.Gameplay
         [Header("Flick Settings")]
         [SerializeField, Range(1, 60)] private int detectionSampleCount = 3;
         [SerializeField] private float flickThreshold = 200.0f;
-        [SerializeField] private float throwMultiplier = 0.01f;          
+        [SerializeField] private float throwMultiplier = 0.01f;
+        [SerializeField] private float throwAngleMultiplier = 1.0f;
         [SerializeField] private float horizontalScale = 1.0f;
         [SerializeField] private float verticalScale = 1.0f;
         [SerializeField] private float forwardScale = 1.0f;
         [SerializeField] private float maxVerticalVelocity = 10.0f;
-        
+        [SerializeField] private float maxAngularVelocity = 20.0f;
+
+
         // TODO: lets move to an input action reference so we can use the inspector to assign the input action asset
         private CubeToss_InputActions _inputActions;
 
@@ -36,7 +39,7 @@ namespace CubeToss.Gameplay
 
         private readonly Queue<Sample> _flickDetectionWindow = new();
         private Sample? _flickStartSample;
-        
+
         private struct Sample
         {
             public readonly Vector2 Position;
@@ -158,7 +161,14 @@ namespace CubeToss.Gameplay
 
                         var velocity = worldDirection * (screenVelocity.magnitude * throwMultiplier);
                         velocity.y = Mathf.Clamp(velocity.y, -maxVerticalVelocity, maxVerticalVelocity);
-                        _currentGrabbable.ReleaseGrab(velocity);
+
+                        var angularAxis = Vector3.Cross(worldDirection, Vector3.forward).normalized;
+                        var degPerSec = screenVelocity.magnitude * throwAngleMultiplier;
+                        var radPerSec = degPerSec * Mathf.Deg2Rad * throwMultiplier;
+                        radPerSec = Mathf.Clamp(radPerSec, -maxAngularVelocity, maxAngularVelocity);
+                        var angularVelocity = angularAxis * radPerSec;
+
+                        _currentGrabbable.ReleaseGrab(velocity, angularVelocity);
                     }
                     else
                     {

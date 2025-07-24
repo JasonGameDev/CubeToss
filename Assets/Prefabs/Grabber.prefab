@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  grabDistance: 200
-  holdDistance: 100
+  grabDistance: 400
+  holdDistance: 200
   grabSpeed: 500
   returnSpeed: 500
   rotationSpeed: 1080
@@ -55,7 +55,9 @@ MonoBehaviour:
   detectionSampleCount: 3
   flickThreshold: 500
   throwMultiplier: 0.05
+  throwAngleMultiplier: 1.5
   horizontalScale: 1
-  verticalScale: 0.33
+  verticalScale: 0.5
   forwardScale: 1.33
   maxVerticalVelocity: 50
+  maxAngularVelocity: 30
