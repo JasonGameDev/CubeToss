@@ -1042,49 +1042,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1168246284}
     m_Modifications:
-    - target: {fileID: 1775267899631513140, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: spiralStrength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775267899631513140, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: gravityStrength
-      value: 50000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1986966363487601362, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: spiralStrength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1986966363487601362, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: gravityStrength
-      value: 50000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3438458495929623079, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: spiralStrength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3438458495929623079, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: gravityStrength
-      value: 50000
+    - target: {fileID: 2738492290411972303, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
+      propertyPath: m_Radius
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5581015519372700505, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
       propertyPath: m_Name
       value: Environment Root
-      objectReference: {fileID: 0}
-    - target: {fileID: 5917818981318777307, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: spiralStrength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5917818981318777307, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: gravityStrength
-      value: 50000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6189969818376669880, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: m_Size.y
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 6189969818376669880, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: m_Center.y
-      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 6895082829406252356, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
       propertyPath: m_LocalPosition.x

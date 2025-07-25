@@ -333,8 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c07a9ac531a174d880f126591705da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityStrength: 500
-  spiralStrength: 300
+  gravityStrength: 20000
+  spiralStrength: 0
 --- !u!1 &4131792829718605110
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,8 +396,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3000, y: 600, z: 3000}
-  m_Center: {x: 0, y: -150, z: 0}
+  m_Size: {x: 3000, y: 900, z: 3000}
+  m_Center: {x: 0, y: -300, z: 0}
 --- !u!114 &688981524745674926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +500,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1775267899631513140
 MonoBehaviour:
@@ -514,8 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c07a9ac531a174d880f126591705da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityStrength: 500
-  spiralStrength: 300
+  gravityStrength: 10000
+  spiralStrength: 0
 --- !u!1 &7207800249003410393
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3438458495929623079
 MonoBehaviour:
@@ -668,8 +668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c07a9ac531a174d880f126591705da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityStrength: 500
-  spiralStrength: 300
+  gravityStrength: 30000
+  spiralStrength: 0
 --- !u!1 &8333328404226632617
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,8 +736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c07a9ac531a174d880f126591705da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityStrength: 500
-  spiralStrength: 300
+  gravityStrength: 10000
+  spiralStrength: 0
 --- !u!1001 &250526272615955827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitSpeed: 20
-  orbitRadius: 2000
+  orbitRadius: 2500
   orbitAxis: {x: 0, y: 1, z: 0}
 --- !u!135 &6946835125594923936
 SphereCollider:
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitSpeed: 30
-  orbitRadius: 1000
+  orbitRadius: 1500
   orbitAxis: {x: 0, y: 1, z: 0}
 --- !u!135 &26035913543824324
 SphereCollider:
