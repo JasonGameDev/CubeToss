@@ -54,7 +54,7 @@ MonoBehaviour:
   - From: Follow
     To: LookAt
     Blend:
-      Style: 0
+      Style: 6
       Time: 1
       CustomCurve:
         serializedVersion: 2

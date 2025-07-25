@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 9056202410606796464, guid: 80ef7807a053d134b93c7cb5d99e36df, type: 3}
-  count: 2000
+  count: 1000
   batchSize: 100
   innerRadius: 200
   outerRadius: 400

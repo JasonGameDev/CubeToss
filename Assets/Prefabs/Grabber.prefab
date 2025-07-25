@@ -46,11 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabbableEventChannel: {fileID: 11400000, guid: f5f9820b393cc054ea9a6749d3825478, type: 2}
   mainCamera: {fileID: 0}
-  grabDistance: 400
+  grabDistance: 600
   holdDistance: 200
   grabSpeed: 500
   returnSpeed: 500
-  rotationSpeed: 1080
+  rotationSpeed: 720
   heldFollowSpeed: 500
   positionError: 0.01
   detectionSampleCount: 3

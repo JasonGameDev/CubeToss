@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3125812808410284367, guid: bac0f2b940273014ebac4fa60465adb2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3125812808410284367, guid: bac0f2b940273014ebac4fa60465adb2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3125812808410284367, guid: bac0f2b940273014ebac4fa60465adb2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3125812808410284367, guid: bac0f2b940273014ebac4fa60465adb2, type: 3}
       propertyPath: m_AnchorMin.y
@@ -173,11 +173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3125812808410284367, guid: bac0f2b940273014ebac4fa60465adb2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 323
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3125812808410284367, guid: bac0f2b940273014ebac4fa60465adb2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -64
       objectReference: {fileID: 0}
     - target: {fileID: 3125812808410284367, guid: bac0f2b940273014ebac4fa60465adb2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -215,7 +215,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_Pivot.y
@@ -239,11 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 125
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 955
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -275,11 +275,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 125
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -62.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1707519381978290357, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -297,10 +297,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4294503265755919787, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5392496739967273507, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
       propertyPath: m_Name
       value: Panel - Power Meter
       objectReference: {fileID: 0}
+    - target: {fileID: 5979250648148129040, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536109370588813176, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566241120475990834, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997861601264914127, guid: 9315c7be8d758ec4caaf76610998ace7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f3245c5f134ea44f88448d02e2919e4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -44,16 +44,16 @@ namespace CubeToss.Cameras
         {
             base.OnEnable();
             
-            grabbableEventChannel.Released.AddListener(OnGrabbableReleased);
-            // grabbableEventChannel.EnteredPlane.AddListener(OnEnteredPlane);
+            grabbableEventChannel.GrabReleased.AddListener(OnGrabbableReleased);
+            grabbableEventChannel.EnteredPlane.AddListener(OnEnteredPlane);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             
-            grabbableEventChannel.Released.RemoveListener(OnGrabbableReleased);
-            // grabbableEventChannel.EnteredPlane.RemoveListener(OnEnteredPlane);
+            grabbableEventChannel.GrabReleased.RemoveListener(OnGrabbableReleased);
+            grabbableEventChannel.EnteredPlane.RemoveListener(OnEnteredPlane);
         }
 
         protected override void Start()
@@ -92,8 +92,8 @@ namespace CubeToss.Cameras
             
             lookAtCamera.transform.position = followCamera.transform.position;
             lookAtCamera.transform.rotation = followCamera.transform.rotation;
-            
-            lookAtCamera.Target.TrackingTarget = grabbable.transform;
+
+            followCamera.Target.TrackingTarget = null;
             
             _currentCamera = lookAtCamera;
             TimeOut = true;

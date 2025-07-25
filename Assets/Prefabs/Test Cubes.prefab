@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2963067387319359934}
   - component: {fileID: 892646215570890148}
+  - component: {fileID: 8938250973019252730}
   m_Layer: 0
   m_Name: Test Cubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2963067387319359934
 Transform:
   m_ObjectHideFlags: 0
@@ -54,6 +55,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalCubes: []
+--- !u!114 &8938250973019252730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202272332446129364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953528331617ab947ac9b1968030d855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 970440554703164915, guid: 47096eff328e11a418ace7db2d72aa97, type: 3}
+  poolSize: 30
 --- !u!1001 &1995483411204210676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,6 +121,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -168,6 +195,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -230,6 +269,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -292,6 +343,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -354,6 +417,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -416,6 +491,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -478,6 +565,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -540,6 +639,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -602,6 +713,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Player Cube (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 586392307593933913, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015663903489045751, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583002725755037167, guid: b4a322152a9b4974db974d19ab3f47a6, type: 3}
+      propertyPath: particlePool
+      value: 
+      objectReference: {fileID: 8938250973019252730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -53,7 +53,7 @@ namespace CubeToss.Gameplay
             switch (state)
             {
                 case GrabState.Grabbing:
-                    MoveAndRotate(_targetPosition, _targetRotation, _grabSpeed, 0.0f);
+                    MoveAndRotate(_targetPosition, _targetRotation, _grabSpeed, _rotationSpeed);
                     break;
                 
                 case GrabState.Returning:
@@ -93,6 +93,7 @@ namespace CubeToss.Gameplay
 
             state = GrabState.Grabbing;
             GrabStarted?.Invoke();
+            EventChannel.GrabStarted.Invoke(this);
         }
         
         public void UpdateGrab(Vector3 targetPosition)
@@ -110,6 +111,7 @@ namespace CubeToss.Gameplay
 
             state = GrabState.Held;
             GrabHeld.Invoke();
+            EventChannel.GrabHeld.Invoke(this);
         }
 
         public void HoldGrab(Vector3 targetPosition)
@@ -127,6 +129,7 @@ namespace CubeToss.Gameplay
 
             state = GrabState.Returning;
             GrabCanceled?.Invoke();
+            EventChannel.GrabCanceled.Invoke(this);
         }
 
         public void ReleaseGrab(Vector3 velocity, Vector3 angularVelocity)
@@ -142,7 +145,7 @@ namespace CubeToss.Gameplay
             
             state = GrabState.Released;
             GrabReleased?.Invoke();
-            EventChannel.Released.Invoke(this);
+            EventChannel.GrabReleased.Invoke(this);
         }
         
         private void MoveAndRotate(Vector3 targetPos, Quaternion targetRot, float posSpeed, float rotSpeed)

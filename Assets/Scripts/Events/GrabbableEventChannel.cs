@@ -10,7 +10,10 @@ namespace CubeToss.Events
     [CreateAssetMenu(fileName = "GrabbableEventChannel", menuName = "Scriptable Objects/GrabbableEventChannel")]
     public class GrabbableEventChannel : ScriptableObject
     {
-        public UnityEvent<GrabbableObject> Released;
+        public UnityEvent<GrabbableObject> GrabStarted;
+        public UnityEvent<GrabbableObject> GrabHeld;
+        public UnityEvent<GrabbableObject> GrabCanceled;
+        public UnityEvent<GrabbableObject> GrabReleased;
         public UnityEvent<GrabbableObject> EnteredPlane;
     }
 }
