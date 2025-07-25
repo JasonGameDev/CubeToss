@@ -1042,10 +1042,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1168246284}
     m_Modifications:
-    - target: {fileID: 2738492290411972303, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
-      propertyPath: m_Radius
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5581015519372700505, guid: 0ff6258bf9eaef042921c9b331dedec4, type: 3}
       propertyPath: m_Name
       value: Environment Root

@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class TestCubeSpawner : MonoBehaviour
 {
@@ -43,6 +46,7 @@ public class TestCubeSpawner : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(TestCubeSpawner))]
 public class TestCubeSpawnerEditor : Editor
 {
@@ -57,3 +61,4 @@ public class TestCubeSpawnerEditor : Editor
         }
     }
 }
+#endif
