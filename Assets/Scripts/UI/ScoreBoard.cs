@@ -25,7 +25,7 @@ namespace CubeToss.UI
             _currentScore = 0;
             _targetScore = 0;
             
-            scoreText.text = null;
+            scoreText.text = "0";
             bonusText.text = null;
         }
 

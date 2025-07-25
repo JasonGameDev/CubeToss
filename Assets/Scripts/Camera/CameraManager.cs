@@ -45,7 +45,7 @@ namespace CubeToss.Cameras
             base.OnEnable();
             
             grabbableEventChannel.Released.AddListener(OnGrabbableReleased);
-            grabbableEventChannel.EnteredPlane.AddListener(OnEnteredPlane);
+            // grabbableEventChannel.EnteredPlane.AddListener(OnEnteredPlane);
         }
 
         protected override void OnDisable()
@@ -53,7 +53,7 @@ namespace CubeToss.Cameras
             base.OnDisable();
             
             grabbableEventChannel.Released.RemoveListener(OnGrabbableReleased);
-            grabbableEventChannel.EnteredPlane.RemoveListener(OnEnteredPlane);
+            // grabbableEventChannel.EnteredPlane.RemoveListener(OnEnteredPlane);
         }
 
         protected override void Start()
@@ -81,17 +81,20 @@ namespace CubeToss.Cameras
         {
             followCamera.Target.TrackingTarget = grabbable.transform;
             followCamera.enabled = true;
+            
             _currentCamera = followCamera;
+            TimeOut = true;
         }
 
         private void OnEnteredPlane(GrabbableObject grabbable)
         {
             // TODO: Need to figure out camera cut bug
+            
             lookAtCamera.transform.position = followCamera.transform.position;
             lookAtCamera.transform.rotation = followCamera.transform.rotation;
             
             lookAtCamera.Target.TrackingTarget = grabbable.transform;
-
+            
             _currentCamera = lookAtCamera;
             TimeOut = true;
         }
