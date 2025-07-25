@@ -104,7 +104,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -149,3 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aeab70d3c238dd48a5990a2d8b05aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreModule: {fileID: 11400000, guid: 39508ee12dc543b42b0f731ddf0dfdef, type: 2}
+  minActiveTime: 0.1
+  maxActiveTime: 1
+  initialSpinMin: 60
+  initialSpinMax: 120
+  velocityThreshold: 1
+  brakeSpeed: 0.01
+  rotationMax: 180
+  brakeRotation: 10

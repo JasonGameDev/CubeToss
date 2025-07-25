@@ -7,6 +7,8 @@ namespace CubeToss.Gameplay
     [RequireComponent(typeof(Rigidbody))]
     public class Asteroid : MonoBehaviour
     {
+        [SerializeField] private ScoreModule scoreModule;
+        
         [Header("Return to Kinematic Settings")]
             
         [SerializeField] private float minActiveTime = 1.0f;
@@ -27,6 +29,8 @@ namespace CubeToss.Gameplay
         
         private float _timer;
 
+        public int ChainCounter { get; private set; }
+        
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -99,7 +103,20 @@ namespace CubeToss.Gameplay
         {
             if (!_rigidbody.isKinematic)
                 return;
-
+            
+            if(!other.attachedRigidbody)
+                return;
+            
+            if (other.TryGetComponent(out GrabbableObject _))
+                ChainCounter++;
+            else if (other.attachedRigidbody.isKinematic == false && other.TryGetComponent(out Asteroid otherAsteroid))
+                ChainCounter += otherAsteroid.ChainCounter;
+            else
+                return;
+            
+            var impactVelocity = other.attachedRigidbody.linearVelocity;
+            scoreModule.ScoreImpact(impactVelocity, ChainCounter);
+            
             _collider.isTrigger = false;
             _rigidbody.isKinematic = false;
             _timer = 0f;

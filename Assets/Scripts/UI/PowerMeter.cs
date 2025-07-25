@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace CubeToss.UI
 {
-    public class PowerMeterUI : MonoBehaviour
+    public class PowerMeter : MonoBehaviour
     {
         // TODO: Normally I would  implement a UI controller module and use that to update UI views but keeping it simple for now.
         [SerializeField] private GrabberEventChannel grabberEventChannel;
