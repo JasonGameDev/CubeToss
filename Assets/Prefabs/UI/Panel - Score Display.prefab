@@ -171,7 +171,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 3.899994}
-  m_SizeDelta: {x: 646, y: 129.1857}
+  m_SizeDelta: {x: 646, y: 59.1}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4208286773395395122
 CanvasRenderer:
@@ -472,7 +472,7 @@ MonoBehaviour:
   scoreModule: {fileID: 11400000, guid: 39508ee12dc543b42b0f731ddf0dfdef, type: 2}
   scoreText: {fileID: 3985163577434751680}
   bonusText: {fileID: 5555876927008493470}
-  countSpeed: 100
+  countDuration: 1
 --- !u!1 &5973675254226237707
 GameObject:
   m_ObjectHideFlags: 0
